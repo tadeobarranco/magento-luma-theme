@@ -25,6 +25,7 @@
             --mine-shaft: #333333;
             --denim: #1979c3;
             --deep-cerulean: #006bb4;
+            --bahama-blue: #00699d;
             --blue-ribon: #1857f7;
             --half-colonial-white: #fdf0d5;
             --clementine: #eb6703;
@@ -54,30 +55,168 @@
             src: url('./fonts/Luma-Icons.woff2') format('woff2'), url('./fonts/Luma-Icons.woff') format('woff');
         }
 
-        body {
-            font-family: "Open Sans", sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
+        }
+
+        body {
+            color: var(--mine-shaft);
+            font-family: "Open Sans", sans-serif;
+            padding: 24px 20px;
+        }
+
+        main {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .title {
+            font-size: 40px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            border-bottom: 1px solid var(--mercury);
+            font-size: var(--lg);
+            font-weight: normal;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+        }
+
+        p {
+            font-size: var(--md);
+            margin-bottom: 24px;
+        }
+
+        .form-registered-customers {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .label {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .label.required::after {
+            color: var(--alizarin-crimson);
+            content: "*";
+            margin-left: 4px;
+        }
+
+        .input {
+            border: 1px solid var(--silver);
+            height: 32px;
+            margin-bottom: 16px;
+            max-width: 80%;
+            padding: 0 8px;
+        }
+
+        .input:focus-visible {
+            box-shadow: 0 0 4px var(--bahama-blue);
+            outline: none;
+        }
+
+        .show-password {
+            align-items: center;
+            display: flex;
+            margin-bottom: 16px;
+        }
+
+        .show-password .input {
+            height: 14px;
+            margin: 0 8px 0 0;
+        }
+
+        .show-password .label {
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .actions {
+            margin-bottom: 24px;
+        }
+
+        .primary-button {
+            background: var(--denim);
+            border: 1px solid var(--denim);
+            border-radius: 4px;
+            color: var(--white);
+            display: inline-block;
+            font-weight: 600;
+            font-size: var(--md);
+            padding: 8px 16px;
+            text-align: center;
+        }
+
+        .signin-button {
+            margin-right: 16px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .actions a {
+            color: var(--deep-cerulean);
+        }
+
+        .required-fields {
+            color: var(--alizarin-crimson);
+            font-size: var(--sm);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                display: block;
+            }
+
+            .input {
+                max-width: 100%;
+            }
+
+            .actions {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .primary-button {
+                width: 100%;
+            }
+
+            .signin-button {
+                margin-bottom: 12px;
+                margin-right: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <main>
+    <header>
         <h1 class="title">Customer Login</h1>
+    </header>
+    <main>
         <section class="registered-customers">
             <h2 class="section-title">Registered Customers</h2>
             <p>If you have an account, sign in with your email address.</p>
             <form action="/" class="form-registered-customers">
-                <label for="email" class="label">Email</label>
+                <label for="email" class="label required">Email</label>
                 <input type="text" id="email" class="input input-email">
-                <label for="password" class="label">Password</label>
+                <label for="password" class="label required">Password</label>
                 <input type="password" id="password" class="input input-password">
-                <input type="checkbox" id="show-password" class="input input-show-password">
-                <label for="show-password" class="label">Show Password</label>
+                <div class="show-password">
+                    <input type="checkbox" id="show-password" class="input input-show-password">
+                    <label for="show-password" class="label">Show Password</label>
+                </div>
                 <div class="actions">
                     <input type="submit" value="Sign In" class="primary primary-button signin-button">
                     <a href="/">Forgot Your Password?</a>
                 </div>
-                <p>* Required Fields</p>
+                <p class="required-fields">* Required Fields</p>
             </form>
         </section>
         <section class="new-customers">
