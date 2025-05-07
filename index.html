@@ -25,6 +25,7 @@
             --mine-shaft: #333333;
             --denim: #1979c3;
             --deep-cerulean: #006bb4;
+            --bahama-blue: #00699d;
             --blue-ribon: #1857f7;
             --half-colonial-white: #fdf0d5;
             --clementine: #eb6703;
@@ -54,9 +55,15 @@
             src: url('./fonts/Luma-Icons.woff2') format('woff2'), url('./fonts/Luma-Icons.woff') format('woff');
         }
 
-        body {
-            font-family: "Open Sans", sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
+        }
+
+        body {
+            color: var(--mine-shaft);
+            font-family: "Open Sans", sans-serif;
+            padding: 24px 20px;
         }
     </style>
 </head>
